@@ -11,12 +11,12 @@ export default {
 </script>
 
 <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Helvetica Neue,Helvetica,Hiragino Sans GB,Arial,sans-serif;
+  font-size: 12px;
 }
 </style>
