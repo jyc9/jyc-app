@@ -1,6 +1,9 @@
 <template>
-  <div class="hello">
+  <div class="page">
     <h1>404 页面没有找到</h1>
+    <router-link :to="{ path: '/'}">
+      返回首页
+    </router-link>
   </div>
 </template>
 
@@ -11,5 +14,7 @@
 </script>
 
 <style scoped>
-
+  .page{
+    text-align: center;
+  }
 </style>
