@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <h1>404 页面没有找到</h1>
+    <p>Page not found</p>
     <router-link :to="{ path: '/'}">
       返回首页
     </router-link>
