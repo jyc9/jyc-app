@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HomePage from '@/pages/HomePage'
 import RegisterPage from '@/pages/argreement/RegisterPage'
 import NotFoundComponent from '@/pages/NotFoundComponent'
+import help from './help'
 Vue.use(Router)
 
 
@@ -23,6 +24,7 @@ export const routes = [
       title:"注册服务协议",
     }
   },
+  help,
   { path: '*',
     component: NotFoundComponent,
     // meta: {
