@@ -1,33 +1,28 @@
 <template>
-
+  <div>
+    模板
+  </div>
 </template>
 
 <script>
   export default {
     name: "jyc-app",
-    mixins: [],
-
-    components: {},
-
+//数据
     props: {},
-
     data() {
     },
-
     computed: {},
-
     watch: {},
-
+//方法
+    methods: {},
     created() {
     },
-
     mounted() {
     },
-
     destroyed() {
     },
-
-    methods: {}
+    components: {},
+    mixins: [],
   }
 </script>
 
