@@ -5,7 +5,6 @@
       left-arrow
     ></van-nav-bar>
     <van-search placeholder="请输入您的疑问关键词" v-model="searchKey" />
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <div v-for="(qaList, index) in list" class="qalist">
         <h5 v-show="(qaList.questiones.length > 0)">{{qaList.categaryTitle}}</h5>
         <van-collapse v-model="activeNames">
@@ -15,7 +14,6 @@
           </van-collapse-item>
         </van-collapse>
       </div>
-    </van-pull-refresh>
   </div>
 </template>
 
@@ -35,6 +33,9 @@
     watch: {
     },
     methods: {
+      onclick_search(){
+        this.$toast('点击');
+      },
       onRefresh() {
         setTimeout(() => {
           this.$toast('刷新成功');
