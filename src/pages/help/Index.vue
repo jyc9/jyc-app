@@ -66,6 +66,7 @@
 
 <style scoped>
 .qalist h5{
+  margin-top:10px;
   line-height: 44px;
   font-weight: 700;
   padding-left: 4vw;
