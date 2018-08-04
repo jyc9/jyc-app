@@ -5,16 +5,15 @@
       left-arrow
     ></van-nav-bar>
     <van-search placeholder="请输入您的疑问关键词" v-model="searchKey" />
-
-    <div v-for="(qaList, index) in list" class="qalist">
-      <h5 v-show="(qaList.questiones.length > 0)">{{qaList.categaryTitle}}</h5>
-      <van-collapse v-model="activeNames">
-        <van-collapse-item  v-for="(item,qindex) in qaList.questiones" :key="index + qindex" :name="index+ 'h' + qindex">
-          <div slot="title"><van-icon name="question" /> {{item.question}}</div>
-          {{item.answer}}
-        </van-collapse-item>
-      </van-collapse>
-    </div>
+      <div v-for="(qaList, index) in list" class="qalist">
+        <h5 v-show="(qaList.questiones.length > 0)">{{qaList.categaryTitle}}</h5>
+        <van-collapse v-model="activeNames">
+          <van-collapse-item  v-for="(item,qindex) in qaList.questiones" :key="index + qindex" :name="index+ 'h' + qindex">
+            <div slot="title"><van-icon name="question" /> {{item.question}}</div>
+            {{item.answer}}
+          </van-collapse-item>
+        </van-collapse>
+      </div>
   </div>
 </template>
 
@@ -24,6 +23,7 @@
     data() {
       return {
         searchKey: '',
+        isLoading: false,
         hotQues:[],
         activeNames: [],
         list: [],
@@ -33,6 +33,15 @@
     watch: {
     },
     methods: {
+      onclick_search(){
+        this.$toast('点击');
+      },
+      onRefresh() {
+        setTimeout(() => {
+          this.$toast('刷新成功');
+          this.isLoading = false;
+        }, 500);
+      }
     },
     mounted: function () {
       // this.axios.get("/api/product/recommendProduct").then(response => {
@@ -57,8 +66,13 @@
 
 <style scoped>
 .qalist h5{
+  margin-top:10px;
   line-height: 44px;
   font-weight: 700;
   padding-left: 4vw;
+  height: 12vw;
+  font-size: 4.267vw;
+  background: #fff;
+  color: #333;
 }
 </style>

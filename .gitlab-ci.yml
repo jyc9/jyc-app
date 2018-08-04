@@ -1,0 +1,68 @@
+image: node:latest
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - 'which rsync || ( apt-get update -y && apt-get install rsync -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" > ~/.ssh/config'
+stages:
+  # - build
+  - deploy
+
+
+# build:
+#   stage: build
+#   script: echo "Building the app"
+
+deploy_review:
+  stage: deploy
+  script:
+    - echo "Deploy a review app"
+    - npm install && npm run build  
+    - rsync -av --delete dist/* pages@$APPS_DOMAIN:/srv/nginx/pages/$CI_PROJECT_NAME$CI_BUILD_REF_SLUG
+  environment:
+    name: review/$CI_BUILD_REF_SLUG
+    url: http://$CI_PROJECT_NAME$CI_BUILD_REF_SLUG.$APPS_DOMAIN
+    on_stop: stop_review
+  only:
+    - branches
+  except:
+    - master
+stop_review:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Remove review app"
+    - ssh -p22 pages@$APPS_DOMAIN  "rm -rf /srv/nginx/pages/$CI_PROJECT_NAME$CI_BUILD_REF_SLUG"
+  when: manual
+  environment:
+   name: review/$CI_BUILD_REF_SLUG
+   action: stop
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server "
+    - npm install && npm run build  
+    - rsync -av --delete dist/* pages@$APPS_DOMAIN:/srv/nginx/pages/$CI_PROJECT_NAME-stag
+  environment:
+    name: staging
+    url: http://$CI_PROJECT_NAME-stag.$APPS_DOMAIN
+  only:
+  - master
+
+deploy_prod:
+  stage: deploy
+  script:
+    - echo "Deploy to production server"
+    - npm install && npm run build  
+    - rsync -av --delete dist/* pages@$APPS_DOMAIN:/srv/nginx/pages/$CI_PROJECT_NAME-prod
+  environment:
+    name: production
+    url: http://$CI_PROJECT_NAME-prod.$APPS_DOMAIN
+  when: manual
+  only:
+  - master
