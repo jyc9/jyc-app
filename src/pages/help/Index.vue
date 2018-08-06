@@ -9,7 +9,7 @@
         <h5 v-show="(qaList.questiones.length > 0)">{{qaList.categaryTitle}}</h5>
         <van-collapse v-model="activeNames">
           <van-collapse-item  v-for="(item,qindex) in qaList.questiones" :key="index + qindex" :name="index+ 'h' + qindex">
-            <div slot="title"><van-icon name="question" /> {{item.question}}</div>
+            <div slot="title"><img class="icon_img" src="../../assets/imgs/ic_help_wen@2x.png"> {{item.question}}</div>
             {{item.answer}}
           </van-collapse-item>
         </van-collapse>
@@ -75,4 +75,12 @@
   background: #fff;
   color: #333;
 }
+  .icon_img{
+    display: inline-block;
+    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
 </style>
