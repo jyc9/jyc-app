@@ -7,6 +7,9 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css';
+import store from './store'
+
+
 Vue.use(Vant)
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
@@ -23,6 +26,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
