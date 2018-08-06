@@ -8,7 +8,7 @@ import VueAxios from 'vue-axios'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css';
 import store from './store'
-
+import LayoutBasic from '@/components/layouts/basic'
 
 Vue.use(Vant)
 Vue.use(VueAxios, axios)
@@ -23,10 +23,11 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+Vue.component('layout-basic', LayoutBasic)
 new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: { App,LayoutBasic },
   template: '<App/>'
 })

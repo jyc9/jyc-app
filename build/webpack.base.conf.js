@@ -13,7 +13,8 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
+    vendor: ['vue', 'vuex','vue-router', 'vant','axios','vue-axios' /*等等其他的模块*/]
   },
   output: {
     path: config.build.assetsRoot,
