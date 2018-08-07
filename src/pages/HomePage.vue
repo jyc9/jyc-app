@@ -1,5 +1,5 @@
 <template>
-  <layout-basic>
+  <app-layout>
     <div class="page">
       <h1>子页面列表</h1>
 
@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-  </layout-basic>
+  </app-layout>
 
 </template>
 

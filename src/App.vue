@@ -18,8 +18,11 @@ export default {
     padding: 0;
     margin: 0;
   }
-#app {
-  font-family: PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Helvetica Neue,Helvetica,Hiragino Sans GB,Arial,sans-serif;
-  font-size: 12px;
-}
+  #app {
+    width: 750px;
+    margin: 0 auto;
+    height: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+  }
 </style>

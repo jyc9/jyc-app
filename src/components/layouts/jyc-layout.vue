@@ -1,24 +1,28 @@
 <template>
-  <div class="basic-layout">
-    <header></header>
-
-    <slot/>
-
+  <div class="container">
+    <header>
+      <slot name="header">
+        <h5 v-if="title">{{title}}</h5>
+      </slot>
+    </header>
+    <main>
+      <slot></slot>
+    </main>
     <footer>
-
+      <slot name="footer"></slot>
     </footer>
   </div>
 </template>
 
 <script>
   export default {
-    name: "basic",
+    name: "jyc-layout",
 //数据
-    props: {},
+    props: {
+      title: String,
+    },
     data() {
-      return {
-
-      }
+      return {}
     },
     computed: {},
     watch: {},

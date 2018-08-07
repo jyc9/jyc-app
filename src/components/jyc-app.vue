@@ -10,6 +10,7 @@
 //数据
     props: {},
     data() {
+      return {}
     },
     computed: {},
     watch: {},
