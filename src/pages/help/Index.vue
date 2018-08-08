@@ -44,22 +44,15 @@
       }
     },
     mounted: function () {
-      // this.axios.get("/api/product/recommendProduct").then(response => {
-      //   console.log("获取信息成功");
-      //   console.log(response);
-      // });
-      // this.onLoad();
       var self = this;
-      this.axios.get('/api/home/helpAssort')
-        .then(function (response) {
-          if(response.data.success){
-            self.list = response.data.datas.qaList;
-            self.hotQues = response.data.datas.hotQues;
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        })
+      this.$api.helpAssort().then(response =>{
+        if(response.data.success){
+          self.list = response.data.datas.qaList;
+          self.hotQues = response.data.datas.hotQues;
+        }
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 </script>

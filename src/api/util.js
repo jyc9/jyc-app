@@ -62,7 +62,7 @@ const withAxios = apiConfig => {
       if (method === "post" || method === "put") {
         key = "data";
       }
-      return axios({
+      return await axios({
         method,
         url: "/api/" + url,
         [key]: data

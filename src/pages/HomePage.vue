@@ -30,7 +30,6 @@
 
 <script>
   import { routes }  from '../router'
-  import api from '../api'
   export default {
     name: "HomePage",
     data () {
@@ -38,17 +37,6 @@
         items: routes
       }
     },
-    created() {
-      api.helpCenter().then(data=>{
-        console.log(data)
-      });
-      api.useraccOrderList({
-        pageNum:1,
-        pageSize:15,
-      }).then(data=>{
-        console.log(data)
-      });
-    }
   }
 </script>
 

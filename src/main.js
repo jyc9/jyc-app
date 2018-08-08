@@ -9,11 +9,11 @@ import Vant from 'vant'
 import 'vant/lib/vant-css/index.css';
 import store from './store'
 import LayoutBasic from '@/components/layouts/jyc-layout'
-
+import Api from './api'
 Vue.use(Vant)
 Vue.use(VueAxios, axios)
+Vue.use(Api)
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
