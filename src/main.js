@@ -6,7 +6,6 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Vant from 'vant'
-import 'vant/lib/vant-css/index.css';
 import store from './store'
 import LayoutBasic from '@/components/layouts/jyc-layout'
 import Api from './api'
